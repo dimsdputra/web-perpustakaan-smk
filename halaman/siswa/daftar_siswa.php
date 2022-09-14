@@ -51,6 +51,7 @@ $siswa = ambil_data("SELECT * FROM siswa");
                                 <td><?= $data_siswa["kelas"]; ?></td>
                                 <td><?= $data_siswa["jenis_kelamin"]; ?></td>
                                 <td><?= $data_siswa["alamat"]; ?></td>
+                                <td><a href="halaman/siswa/edit_siswa.php?id=<?= $data_siswa["id"] ?>">Ubah</a></td>
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>

@@ -1,5 +1,5 @@
 <?php
-require './login/koneksi.php';
+require '../../login/koneksi.php';
 
 if (isset($_POST["submit"])) {
 	if (tambah($_POST) > 0) {
