@@ -1,0 +1,23 @@
+body {
+  background: white;
+}
+
+.sidebar {
+  min-width: 15%;
+}
+.content {
+  min-height: 100vh;
+  width: 100%;
+}
+.sidebar li.active {
+  background: #9300ff;
+  border-radius: 8px;
+}
+
+.sidebar li.active a {
+  color: white;
+}
+
+.sidebar li a {
+  color: black;
+}
