@@ -76,7 +76,7 @@ $peminjaman_buku = ambil_data("SELECT * FROM peminjaman_buku, siswa, buku WHERE 
 									<td><?= $data_peminjaman_buku["tanggal_pengembalian"]; ?></td>
 									<td><?= $data_peminjaman_buku["status_peminjaman"]; ?></td>
 									<td>
-										<button class="btn btn-warning"><a href="" class="text-decoration-none d-block text-white">Perpanjang</a></button>
+										<button class="btn btn-warning"><a href="" class="text-decoration-none d-block text-white">Status Peminjaman</a></button>
 									</td>
 								</tr>
 								<?php $i++; ?>
