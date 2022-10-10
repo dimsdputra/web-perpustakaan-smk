@@ -1,4 +1,7 @@
 <?php
+
+//Jangan Ubah Yang Ini Ya Gaes, Masih Diperbaiki
+
 session_start();
 require 'koneksi.php';
 

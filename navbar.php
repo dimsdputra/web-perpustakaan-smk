@@ -18,7 +18,7 @@ if (!isset($_SESSION["login"])) {
             </a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="daftar_siswa.php">Daftar Siswa</a></li>
-                <li><a class="dropdown-item" href="siswa.php">Tambah Data Siswa</a></li>
+                <li><a class="dropdown-item" href="tambah_siswa.php">Tambah Data Siswa</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
@@ -26,7 +26,7 @@ if (!isset($_SESSION["login"])) {
                 <i class="bi bi-book"></i> Buku</a>
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="buku.php">Daftar Buku</a></li>
+                <li><a class="dropdown-item" href="daftar_buku.php">Daftar Buku</a></li>
                 <li><a class="dropdown-item" href="tambah_buku.php">Tambah Data Buku</a></li>
             </ul>
         </li>
@@ -35,7 +35,7 @@ if (!isset($_SESSION["login"])) {
             <i class="bi bi-journals"></i> Peminjaman Buku</a>
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="peminjaman_buku.php">Daftar Peminjaman</a></li>
+                <li><a class="dropdown-item" href="daftar_peminjaman_buku.php">Daftar Peminjaman</a></li>
                 <li><a class="dropdown-item" href="tambah_peminjaman.php">Tambah Data Peminjaman</a></li>
             </ul>
         </li>
@@ -44,7 +44,7 @@ if (!isset($_SESSION["login"])) {
                 <i class="bi bi-person-circle"></i> Admin</a>
             </a>
             <ul class="dropdown-menu">
-                <!-- <li><a class="dropdown-item" href="data_admin.php">Data Admin</a></li> -->
+                <!-- <li><a class="dropdown-item" href="daftar_data_admin.php">Data Admin</a></li> -->
                 <li><a class="dropdown-item" href="registrasi.php">Tambah Admin</a></li>
             </ul>
         </li>

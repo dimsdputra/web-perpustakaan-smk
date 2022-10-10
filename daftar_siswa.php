@@ -30,7 +30,7 @@ $siswa = ambil_data("SELECT * FROM siswa");
             </div>
             <div class="container ps-5 pe-5 pt-2 pb-2">
                 <div class="mt-2">
-                    <button type="button" class="btn" style="background-color: #00ADB5;"><a class="text-decoration-none d-block text-white" aria-current="page" href="siswa.php">Tambah Data Siswa</a></button>
+                    <button type="button" class="btn" style="background-color: #00ADB5;"><a class="text-decoration-none d-block text-white" aria-current="page" href="tambah_siswa.php">Tambah Data Siswa</a></button>
                     <?php
                     if (isset($_SESSION['berhasil'])) :
                     ?>

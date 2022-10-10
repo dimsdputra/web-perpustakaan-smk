@@ -73,7 +73,7 @@ function tambah($data){
 
     if (mysqli_fetch_assoc($cek_nama) || mysqli_fetch_assoc($cek_nis)) {
         $_SESSION['gagal'] = "NIS atau Nama Siswa Sudah Terdaftar!";
-		header("Location: siswa.php");
+		header("Location: tambah_siswa.php");
     }
 
     $query = "INSERT INTO siswa VALUES('', '$nis', '$nama', '$kelas', '$jenis_kelamin', '$alamat')";

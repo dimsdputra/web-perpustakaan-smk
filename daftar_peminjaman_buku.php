@@ -58,6 +58,7 @@ $peminjaman_buku = ambil_data("SELECT * FROM peminjaman_buku, siswa, buku WHERE 
 								<th scope="col">Buku Dipinjam</th>
 								<th scope="col">Tanggal Peminjaman</th>
 								<th scope="col">Tanggal Pengembalian</th>
+								<th scope="col">Perpanjang/Dikembalikan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -72,6 +73,10 @@ $peminjaman_buku = ambil_data("SELECT * FROM peminjaman_buku, siswa, buku WHERE 
 									<td><?= $data_peminjaman_buku["judul"]; ?></td>
 									<td><?= $data_peminjaman_buku["tanggal_peminjaman"]; ?></td>
 									<td><?= $data_peminjaman_buku["tanggal_pengembalian"]; ?></td>
+									<td>
+										<button class="btn btn-warning"><a href="" class="text-decoration-none d-block text-white">Perpanjang</a></button>
+										<button class="btn btn-danger"><a href="" class="text-decoration-none d-block text-white">Dikembalikan</a></button>
+									</td>
 								</tr>
 								<?php $i++; ?>
 							<?php endforeach; ?>

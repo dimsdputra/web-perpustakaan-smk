@@ -70,7 +70,7 @@ $buku = ambil_data("SELECT * FROM buku");
                                     <td><?= $data_buku["penerbit"]; ?></td>
                                     <td>
                                         <button class="btn btn-warning"><a href="" class="text-decoration-none d-block text-white">Edit</a></button>
-                                        <button class="btn btn-danger"><a href="hapus.php?id=<?= $data_buku["kode_buku"] ?>" class="text-decoration-none d-block text-white">Delete</a></button>
+                                        <button class="btn btn-danger"><a href="" class="text-decoration-none d-block text-white">Delete</a></button>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
