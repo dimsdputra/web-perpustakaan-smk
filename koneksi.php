@@ -147,14 +147,13 @@ function tambahPeminjamanBuku($data){
     $judul_buku = htmlspecialchars($data["judul_buku"]);
     $tanggal_peminjaman = htmlspecialchars($data["tanggal_peminjaman"]);
     $tanggal_pengembalian = htmlspecialchars($data["tanggal_pengembalian"]);
+    $status_peminjaman = htmlspecialchars($data["status_peminjaman"]);
 
-    $query = "INSERT INTO peminjaman_buku VALUES('', '$nama_peminjam', '$judul_buku', '$tanggal_peminjaman', '$tanggal_pengembalian')";
+    $query = "INSERT INTO peminjaman_buku VALUES('', '$nama_peminjam', '$judul_buku', '$tanggal_peminjaman', '$tanggal_pengembalian', '$status_peminjaman')";
 
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
 }
-
-//Hapus data Peminjaman Buku
 
 //Edit data Peminjaman Buku

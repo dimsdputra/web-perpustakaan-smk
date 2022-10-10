@@ -70,7 +70,7 @@ $siswa = ambil_data("SELECT * FROM siswa");
                                     <td><?= $data_siswa["alamat"]; ?></td>
                                     <td>
                                         <button class="btn btn-warning"><a href="edit_siswa.php?id=<?= $data_siswa["id"]?>" class="text-decoration-none d-block text-white">Edit</a></button>
-                                        <button class="btn btn-danger"><a href="hapus.php?id=<?= $data_siswa["id"]?>" class="text-decoration-none d-block text-white">Delete</a></button>
+                                        <button class="btn btn-danger"><a href="hapus_siswa.php?id=<?= $data_siswa["id"]?>" class="text-decoration-none d-block text-white">Delete</a></button>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

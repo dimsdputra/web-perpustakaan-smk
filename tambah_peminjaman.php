@@ -81,6 +81,14 @@ $buku = ambil_data("SELECT * FROM buku");
                                 <input type="date" class="form-control" id="tanggal_pengembalian" name="tanggal_pengembalian" required>
                             </div>
                             <div class="mb-3">
+                                <label for="status_peminjaman" class="form-label">Status Peminjaman</label>
+                                <select class="form-select" aria-label="Default select example" id="status_peminjaman" name="status_peminjaman" required>
+									<option disabled selected>Pilih Status Peminjaman</option>
+									<option value="Dipinjam">Dipinjam</option>
+									<option value="Dikembalikan">Dikembalikan</option>
+								</select>
+                            </div>
+                            <div class="mb-3">
                                 <button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Submit</button>
                             </div>
                         </div>
