@@ -6,7 +6,7 @@ require 'koneksi.php';
 if (isset($_POST["submit"])) {
     if (tambahPeminjamanBuku($_POST) > 0) {
         $_SESSION['berhasil'] = "Data Berhasil Ditambahkan";
-        header("Location: peminjaman_buku.php");
+        header("Location: daftar_peminjaman_buku.php");
     }
 }
 
