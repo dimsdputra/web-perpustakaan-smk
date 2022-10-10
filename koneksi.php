@@ -98,6 +98,8 @@ function edit($data){
 
     mysqli_query($conn, $query);
 
+    header("Location: daftar_siswa.php");
+
     return mysqli_affected_rows($conn);
 }
 
