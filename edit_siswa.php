@@ -2,16 +2,6 @@
 session_start();
 require 'koneksi.php';
 
-$id = $_GET["id"];
-
-$siswa = ambil_data("SELECT * FROM siswa WHERE id = $id")[0];
-
-if (isset($_POST["submit"])) {
-	if (edit($_POST) > 0) {
-		$_SESSION['berhasil'] = "Data Berhasil Ditambahkan";
-		header("Location: daftar_siswa.php");
-	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,20 +40,19 @@ if (isset($_POST["submit"])) {
 					endif;
 					?>
 					<form action="" method="post">
-                        <input type="hidden" name="id" value="<?= $siswa["id"] ?>">
 						<div class="card p-3">
 							<div class="mb-3">
 								<label for="NIS" class="form-label">NIS</label>
-								<input type="text" class="form-control" id="NIS" name="NIS" value="<?= $siswa["NIS"]; ?>" required>
+								<input type="text" class="form-control" id="NIS" name="NIS" value="" required>
 							</div>
 							<div class="mb-3">
 								<label for="nama" class="form-label">Nama</label>
-								<input type="text" class="form-control" id="nama" name="nama" value="<?= $siswa["nama"]; ?>" required>
+								<input type="text" class="form-control" id="nama" name="nama" value="" required>
 							</div>
 							<div class="mb-3">
 								<label for="kelas" class="form-label">Kelas</label>
 								<select class="form-select" aria-label="Default select example" id="kelas" name="kelas" required>
-									<option value="<?= $siswa["kelas"]; ?>" selected><?= $siswa["kelas"]; ?></option>
+									<option value="" selected>Pilih Kelas</option>
 									<option value="X RPL">X RPL</option>
 									<option value="XI RPL">XI RPL</option>
 									<option value="XII RPL">XII RPL</option>
@@ -72,14 +61,14 @@ if (isset($_POST["submit"])) {
 							<div class="mb-3">
 								<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
 								<select class="form-select" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin" required>
-									<option value="<?= $siswa["jenis_kelamin"]; ?>" selected><?= $siswa["jenis_kelamin"]; ?></option>
+									<option value="" selected>Pilih Jenis Kelamin</option>
 									<option value="laki-laki">Laki-laki</option>
 									<option value="perempuan">Perempuan</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label for="alamat" class="form-label">Alamat</label>
-								<textarea class="form-control" id="alamat" rows="3" name="alamat" required><?= $siswa["alamat"]; ?></textarea>
+								<textarea class="form-control" id="alamat" rows="3" name="alamat" required>Alamat</textarea>
 							</div>
 							<div class="mb-3">
 								<button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Update</button>
