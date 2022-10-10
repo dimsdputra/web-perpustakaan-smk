@@ -45,6 +45,18 @@ function registrasi($data)
     return mysqli_affected_rows($conn);
 }
 
+//Ambil data
+function ambil_data($data){
+    global $conn;
+    
+    $result = mysqli_query($conn, $data);
+
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $rows[] = $row;
+    }
+    return $rows;
+}
 
 //Tambah data Siswa
 function tambah($data){
@@ -61,7 +73,7 @@ function tambah($data){
 
     if (mysqli_fetch_assoc($cek_nama) || mysqli_fetch_assoc($cek_nis)) {
         $_SESSION['gagal'] = "NIS atau Nama Siswa Sudah Terdaftar!";
-		header("Location: http://localhost/web_dinamis/index.php?page=tambah_siswa");
+		header("Location: siswa.php");
     }
 
     $query = "INSERT INTO siswa VALUES('', '$nis', '$nama', '$kelas', '$jenis_kelamin', '$alamat')";
@@ -71,17 +83,30 @@ function tambah($data){
     return mysqli_affected_rows($conn);
 }
 
-//Ambil data siswa
-function ambil_data($data){
+//Edit data Siswa
+function edit($data){
     global $conn;
-    
-    $result = mysqli_query($conn, $data);
 
-    $rows = [];
-    while($row = mysqli_fetch_assoc($result)){
-        $rows[] = $row;
-    }
-    return $rows;
+    $id = $data["id"];
+    $nis = htmlspecialchars($data["NIS"]);
+    $nama = htmlspecialchars($data["nama"]);
+    $kelas = htmlspecialchars($data["kelas"]);
+    $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+
+    $query = "UPDATE siswa SET NIS = '$nis', nama = '$nama', kelas = '$kelas', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat' WHERE id = $id";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+//hapus data siswa
+function hapusSiswa($id) {
+    global $conn;
+    mysqli_query($conn, "DELETE FROM siswa WHERE id = $id");
+
+    return mysqli_affected_rows($conn);
 }
 
 //Tambah data Buku
@@ -95,11 +120,10 @@ function tambahBuku($data){
     $penerbit = htmlspecialchars($data["penerbit"]);
 
     $cek_kode = mysqli_query($conn, "SELECT kode_buku FROM buku WHERE kode_buku = '$kode_buku'");
-    $cek_judul = mysqli_query($conn, "SELECT judul FROM buku WHERE judul = '$judul'");
 
-    if (mysqli_fetch_assoc($cek_kode) || mysqli_fetch_assoc($cek_judul)) {
+    if (mysqli_fetch_assoc($cek_kode)) {
         $_SESSION['gagal'] = "Kode Buku atau Judul Sudah Ada!";
-		header("Location: http://localhost/web_dinamis/index.php?page=tambah_buku");
+		header("Location: tambah_buku.php");
     }
 
     $query = "INSERT INTO buku VALUES('$kode_buku', '$judul', '$penulis', '$tahun_terbit', '$penerbit')";
@@ -108,3 +132,27 @@ function tambahBuku($data){
 
     return mysqli_affected_rows($conn);
 }
+
+//Edit data Buku
+
+//hapus data buku
+
+//Tambah data Peminjaman Buku
+function tambahPeminjamanBuku($data){
+    global $conn;
+
+    $nama_peminjam = htmlspecialchars($data["peminjam"]);
+    $judul_buku = htmlspecialchars($data["judul_buku"]);
+    $tanggal_peminjaman = htmlspecialchars($data["tanggal_peminjaman"]);
+    $tanggal_pengembalian = htmlspecialchars($data["tanggal_pengembalian"]);
+
+    $query = "INSERT INTO peminjaman_buku VALUES('', '$nama_peminjam', '$judul_buku', '$tanggal_peminjaman', '$tanggal_pengembalian')";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+//Hapus data Peminjaman Buku
+
+//Edit data Peminjaman Buku

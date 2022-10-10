@@ -1,9 +1,11 @@
 body {
   background: white;
+  overflow-x: hidden;
 }
 
 .sidebar {
-  min-width: 15%;
+  min-width: 25%;
+  min-height: 100%;
 }
 .content {
   min-height: 100vh;
