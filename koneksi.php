@@ -58,6 +58,8 @@ function ambil_data($data){
     return $rows;
 }
 
+
+//Halaman Siswa
 //Tambah data Siswa
 function tambah($data){
     global $conn;
@@ -111,6 +113,8 @@ function hapusSiswa($id) {
     return mysqli_affected_rows($conn);
 }
 
+
+//Halaman Buku
 //Tambah data Buku
 function tambahBuku($data){
     global $conn;
@@ -139,21 +143,8 @@ function tambahBuku($data){
 
 //hapus data buku
 
+
+//Halaman Peminjaman Buku
 //Tambah data Peminjaman Buku
-function tambahPeminjamanBuku($data){
-    global $conn;
-
-    $nama_peminjam = htmlspecialchars($data["peminjam"]);
-    $judul_buku = htmlspecialchars($data["judul_buku"]);
-    $tanggal_peminjaman = htmlspecialchars($data["tanggal_peminjaman"]);
-    $tanggal_pengembalian = htmlspecialchars($data["tanggal_pengembalian"]);
-    $status_peminjaman = htmlspecialchars($data["status_peminjaman"]);
-
-    $query = "INSERT INTO peminjaman_buku VALUES('', '$nama_peminjam', '$judul_buku', '$tanggal_peminjaman', '$tanggal_pengembalian', '$status_peminjaman')";
-
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 //Edit data Peminjaman Buku

@@ -3,7 +3,7 @@ session_start();
 require 'koneksi.php';
 
 //Ambil data peminjaman buku
-$peminjaman_buku = ambil_data("SELECT * FROM peminjaman_buku, siswa, buku WHERE peminjaman_buku.id_siswa = siswa.id AND peminjaman_buku.id_buku = buku.kode_buku");
+
 
 ?>
 
@@ -59,28 +59,20 @@ $peminjaman_buku = ambil_data("SELECT * FROM peminjaman_buku, siswa, buku WHERE 
 								<th scope="col">Tanggal Peminjaman</th>
 								<th scope="col">Tanggal Pengembalian</th>
 								<th scope="col">Status Peminjaman</th>
-								<th scope="col">Perpanjang/Dikembalikan</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 1; ?>
-							<?php foreach ($peminjaman_buku as $data_peminjaman_buku) : ?>
 								<tr>
-									<th scope="row"><?= $i; ?></th>
-									<td class="table-secondary"><?= $data_peminjaman_buku["NIS"]; ?></td>
-									<td><?= $data_peminjaman_buku["nama"]; ?></td>
-									<td><?= $data_peminjaman_buku["kelas"]; ?></td>
-									<td><?= $data_peminjaman_buku["kode_buku"]; ?></td>
-									<td><?= $data_peminjaman_buku["judul"]; ?></td>
-									<td><?= $data_peminjaman_buku["tanggal_peminjaman"]; ?></td>
-									<td><?= $data_peminjaman_buku["tanggal_pengembalian"]; ?></td>
-									<td><?= $data_peminjaman_buku["status_peminjaman"]; ?></td>
-									<td>
-										<button class="btn btn-warning"><a href="" class="text-decoration-none d-block text-white">Status Peminjaman</a></button>
-									</td>
+									<th scope="row">1</th>
+									<td class="table-secondary">11231231</td>
+									<td>Ferdi</td>
+									<td>XII RPL</td>
+									<td>1123</td>
+									<td>Rekayasa Perangkat Lunak</td>
+									<td>2022-11-10</td>
+									<td>2022-18-10</td>
+									<td>Dipinjam</td>
 								</tr>
-								<?php $i++; ?>
-							<?php endforeach; ?>
 						</tbody>
 					</table>
 				</div>

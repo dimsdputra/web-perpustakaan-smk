@@ -3,18 +3,12 @@ session_start();
 
 require 'koneksi.php';
 
-if (isset($_POST["submit"])) {
-    if (tambahPeminjamanBuku($_POST) > 0) {
-        $_SESSION['berhasil'] = "Data Berhasil Ditambahkan";
-        header("Location: daftar_peminjaman_buku.php");
-    }
-}
 
 //Ambil data siswa
-$siswa = ambil_data("SELECT * FROM siswa");
+
 
 //Ambil data buku
-$buku = ambil_data("SELECT * FROM buku");
+
 ?>
 
 <!DOCTYPE html>
@@ -58,18 +52,14 @@ $buku = ambil_data("SELECT * FROM buku");
                                 <label for="kode_buku" class="form-label">Nama Peminjam</label>
                                 <select class="form-select" aria-label="Default select example" id="peminjam" name="peminjam" required>
 									<option disabled selected>Pilih Data</option>
-                                    <?php foreach ($siswa as $data_siswa) : ?>
-									<option value=<?= $data_siswa["id"]; ?>><?= $data_siswa["nama"]; ?></option>
-                                    <?php endforeach; ?>
+                                    <option value="">data siswa</option>
 								</select>
                             </div>
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul Buku</label>
                                 <select class="form-select" aria-label="Default select example" id="judul_buku" name="judul_buku" required>
 									<option disabled selected>Pilih Data</option>
-									<?php foreach ($buku as $data_buku) : ?>
-									<option value=<?= $data_buku["kode_buku"]; ?>><?= $data_buku["judul"]; ?></option>
-                                    <?php endforeach; ?>
+									<option value="">data buku</option>
 								</select>
                             </div>
                             <div class="mb-3">
