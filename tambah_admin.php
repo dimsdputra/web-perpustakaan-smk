@@ -2,13 +2,20 @@
 session_start();
 require 'koneksi.php';
 
-if (isset($_POST["register"])) {
-    if (registrasi($_POST) > 0) {
-        $_SESSION['registrasi'] = "Data Berhasil Ditambahkan";
-        header("Location: http://localhost/web_dinamis/index.php?page=data_admin");
+$limit = ambil_data("SELECT COUNT(id) AS 'limit' FROM admin")[0];
+
+if ($limit["limit"] == 10) {
+    $_SESSION["admin_message"] = "Admin gagal di tambahkan, batas 10 Admin";
+    header("Location: daftar_admin.php");
+}
+
+if (isset($_POST["submit"])) {
+    if (tambahAdmin($_POST) > 0) {
+        $_SESSION["admin_message"] = "Admin berhasil ditambahkan";
     } else {
-        echo "data gagal ditambahkan";
+        $_SESSION["admin_message"] = "Admin gagal ditambahkan";
     }
+    header("Location: daftar_admin.php");
 }
 ?>
 
@@ -39,19 +46,23 @@ if (isset($_POST["register"])) {
                     <form action="" method="post">
                         <div class="card p-3">
                             <div class="mb-3">
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Bagus Adrian" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" id="username" class="form-control" placeholder="Bagus Adrian" required>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="bagus2234" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="1234" required>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="In here..." required>
                             </div>
                             <div class="mb-3">
-                                <label for="password2" class="form-label">Konfirmasi Password</label>
-                                <input type="password" name="password2" id="password2" class="form-control" placeholder="1234" required>
+                                <label for="konfir_password" class="form-label">Konfirmasi Password</label>
+                                <input type="password" name="konfir_password" id="konfir_password" class="form-control" placeholder="In here..." required>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="register" class="btn text-light" style="background-color: #00ADB5;">Submit</button>
+                                <button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Submit</button>
                             </div>
                         </div>
                     </form>
