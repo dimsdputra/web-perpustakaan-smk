@@ -61,14 +61,14 @@ if(isset($_POST["submit"])) {
             <div class="container pt-2 pe-5 ps-5">
                <div class="mt-2">
                     <?php
-                        if (isset($_SESSION['gagal'])) :
+                        if (isset($_SESSION['message_fail'])) :
                      ?>
                         <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-                            <?php echo $_SESSION['gagal']; ?>
+                            <?php echo $_SESSION['message_fail']; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php
-                        unset($_SESSION["gagal"]);
+                        unset($_SESSION["message_fail"]);
                         endif;
                     ?>
                 </div>

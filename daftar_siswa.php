@@ -52,14 +52,22 @@ if (isset($_POST["cari"])) {
                         </a>
                     </button>
                     <?php
-                        if (isset($_SESSION["siswa_message"])) :
+                        if (isset($_SESSION["message_success"])) :
                     ?>
                         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
-                            <?php echo $_SESSION["siswa_message"]; ?>
+                            <?php echo $_SESSION["message_success"]; ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php
-                        unset($_SESSION["siswa_message"]);
+                        elseif (isset($_SESSION["message_fail"])) :
+                    ?>
+                        <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                            <?php echo $_SESSION["message_fail"]; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        unset($_SESSION["message_success"]);
+                        unset($_SESSION["message_fail"]);
                         endif;
                     ?>
 
@@ -120,7 +128,7 @@ if (isset($_POST["cari"])) {
                                     <td><?= $data_siswa["kelas"]; ?></td>
                                     <td><?= $data_siswa["jenis_kelamin"]; ?></td>
                                     <td><?= $data_siswa["alamat"]; ?></td>
-                                    <td class="d-flex gap-2">
+                                    <td class="d-flex justify-content-center gap-2">
                                        <a href="edit_siswa.php?id=<?= $data_siswa["id"] ?>" class="btn btn-warning text-decoration-none d-block text-white">Edit</a>
                                        <a href="hapus_siswa.php?id=<?= $data_siswa["id"] ?>" class="btn btn-danger text-decoration-none d-block text-white">Delete</a>
                                     </td>

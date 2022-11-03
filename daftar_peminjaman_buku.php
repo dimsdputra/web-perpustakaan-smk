@@ -43,6 +43,9 @@ if(isset($_POST["cari"])) {
 					<button type="button" class="btn" style="background-color: #00ADB5;">
 						<a class="text-decoration-none d-block text-white" aria-current="page" href="tambah_peminjaman.php">Tambah Peminjaman Buku</a>
 					</button>
+					<button type="button" class="btn btn-success">
+						<a class="text-decoration-none d-block text-white" aria-current="page" href="cetak_daftar_peminjaman.php" target="_blank">Cetak</a>
+					</button>
 					<?php
 						if (isset($_SESSION["peminjaman_message"])) :
 					?>

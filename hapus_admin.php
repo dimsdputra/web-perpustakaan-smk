@@ -6,10 +6,10 @@ require("koneksi.php");
 $count = ambil_data("SELECT COUNT(id) AS 'count' FROM admin")[0]; 
 
 if ($count["count"] == 1) {
-   $_SESSION["admin_message"] = "Gagal menghapus Admin, Jumlah minimal 1 Admin";
+   $_SESSION["message_warning"] = "Gagal menghapus Admin, Jumlah minimal 1 Admin";
 } else {
    if (hapusAdmin($_GET["id"]) > 0) {
-      $_SESSION["admin_message"] = "Berhasil menghapus Admin";
+      $_SESSION["message_success"] = "Berhasil menghapus Admin";
    } else {
       $_SESSION["admin_message"] = "Gagal menghapus Admin";
    }

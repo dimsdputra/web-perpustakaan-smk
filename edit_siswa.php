@@ -8,7 +8,7 @@ $siswa = ambil_data("SELECT * FROM siswa WHERE id = $id")[0];
 
 if(isset($_POST["submit"])) {
    if(editSiswa($_POST) > 0) {
-      $_SESSION["siswa_message"] = "Data siswa ". $siswa["nama"] ." berhasil diubah";
+      $_SESSION["message_success"] = "Data siswa ". $siswa["nama"] ." berhasil diubah";
       header("Location: daftar_siswa.php");
    }
 }
@@ -39,9 +39,18 @@ if(isset($_POST["submit"])) {
 			</div>
 			<div class="container pt-2 pb-2 pe-5 ps-5">
 				<div class="mt-2">
+					<?php if (isset($_SESSION['message_fail'])) : ?>
+						<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+							<?php echo $_SESSION['message_fail']; ?>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					<?php
+						unset($_SESSION["message_fail"]);
+						endif;
+					?>
 					<form action="" method="post">
 						<div class="card p-3">
-							<input type="hidden" name="id" value="<?= $siswa["id"] ?>">
+							<input type="hidden" name="id" id="id" value="<?= $siswa["id"] ?>">
 							<div class="mb-3">
 								<label for="NIS" class="form-label">NIS</label>
 								<input type="text" class="form-control" id="NIS" name="NIS" value="<?= $siswa["NIS"] ?>" required>
@@ -53,7 +62,7 @@ if(isset($_POST["submit"])) {
 							<div class="mb-3">
 								<label for="kelas" class="form-label">Kelas</label>
 								<select class="form-select" aria-label="Default select example" id="kelas" name="kelas" required>
-									<option value="<?= $siswa["kelas"] ?>" selected disabled><?= $siswa["kelas"] ?></option>
+									<option value="<?= $siswa["kelas"] ?>" selected><?= $siswa["kelas"] ?></option>
 									<option value="X RPL">X RPL</option>
 									<option value="XI RPL">XI RPL</option>
 									<option value="XII RPL">XII RPL</option>
@@ -62,7 +71,7 @@ if(isset($_POST["submit"])) {
 							<div class="mb-3">
 								<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
 								<select class="form-select" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin" required>
-									<option value="<?= $siswa["jenis_kelamin"] ?>" selected disabled><?= $siswa["jenis_kelamin"] ?></option>
+									<option value="<?= $siswa["jenis_kelamin"] ?>" selected><?= $siswa["jenis_kelamin"] ?></option>
 									<option value="laki-laki">Laki-laki</option>
 									<option value="perempuan">Perempuan</option>
 								</select>
@@ -72,6 +81,7 @@ if(isset($_POST["submit"])) {
 								<textarea class="form-control" id="alamat" rows="3" name="alamat" required><?= $siswa["alamat"] ?></textarea>
 							</div>
 							<div class="mb-3">
+								<a href="daftar_siswa.php" class="btn btn-secondary">Batal</a>
 								<button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Update</button>
 							</div>
 						</div>

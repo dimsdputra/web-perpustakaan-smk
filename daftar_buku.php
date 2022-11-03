@@ -40,7 +40,14 @@ if (isset($_POST["cari"])) {
             </div>
             <div class="container ps-5 pe-5 pt-2 pb-2">
                 <div class="mt-2">
-                    <button type="button" class="btn" style="background-color: #00ADB5;"><a class="text-decoration-none d-block text-white" aria-current="page" href="tambah_buku.php">Tambah Data Buku</a></button>
+                    <button type="button" class="btn" style="background-color: #00ADB5;">
+                        <a class="text-decoration-none d-block text-white" aria-current="page" href="tambah_buku.php">Tambah Data Buku</a>
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <a class="text-decoration-none d-block text-white" aria-current="page" href="cetak_daftar_buku.php" target="_blank">
+                            Cetak
+                        </a>
+                    </button>
                     <?php if (isset($_SESSION["message_success"])) : ?>
                         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
                             <?php echo $_SESSION["message_success"]; ?>
@@ -114,7 +121,7 @@ if (isset($_POST["cari"])) {
                                 <td><?= $data_buku["penulis"]; ?></td>
                                 <td><?= $data_buku["tahun_terbit"]; ?></td>
                                 <td><?= $data_buku["penerbit"]; ?></td>
-                                <td class="d-flex gap-2">
+                                <td class="d-flex justify-content-center gap-2">
                                     <a href="edit_buku.php?kode_buku=<?= $data_buku["kode_buku"] ?>" class="btn btn-warning text-decoration-none d-block text-white">Edit</a>
                                     <a href="hapus_buku.php?kode_buku=<?= $data_buku["kode_buku"] ?>" class="btn btn-danger text-decoration-none d-block text-white">Delete</a>
                                 </td>

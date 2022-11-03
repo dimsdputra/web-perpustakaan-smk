@@ -116,16 +116,18 @@ function tambahSiswa($data){
     $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
     
-    $cek_nis = mysqli_query($conn, "SELECT NIS FROM siswa WHERE NIS = '$nis'");
-    $cek_nama = mysqli_query($conn, "SELECT nama FROM siswa WHERE nama = '$nama'");
+    $cek_nama = ambil_data("SELECT nama FROM siswa WHERE nama = '$nama'")[0]["nama"];
+    $cek_nis = ambil_data("SELECT NIS FROM siswa WHERE NIS = '$nis'")[0]["NIS"];
 
-    if (mysqli_fetch_assoc($cek_nama) || mysqli_fetch_assoc($cek_nis)) {
-        $_SESSION['gagal'] = "NIS atau Nama Siswa Sudah Terdaftar!";
-		header("Location: tambah_siswa.php");
+    if ($cek_nis == $nis) {
+        $_SESSION['message_fail'] = "NIS siswa sudah terdaftar";
+        header("Location: tambah_siswa.php");
+    } elseif ($cek_nama == $nama) {
+        $_SESSION['message_fail'] = "Nama siswa sudah terdaftar";
+        header("Location: tambah_siswa.php");
     }
     
     $query = "INSERT INTO siswa VALUES('', '$nis', '$nama', '$kelas', '$jenis_kelamin', '$alamat')";
-    
     mysqli_query($conn, $query);
     
     return mysqli_affected_rows($conn);
@@ -135,19 +137,27 @@ function tambahSiswa($data){
 function editSiswa($data) {
     global $conn;
     
-    $id = $data["id"];
+    $id = intval($data["id"]);
     $nis = htmlspecialchars($data["NIS"]);
     $nama = htmlspecialchars($data["nama"]);
     $kelas = htmlspecialchars($data["kelas"]);
     $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
     
+    $cek_nama = ambil_data("SELECT nama FROM siswa WHERE nama = '$nama' AND id != $id")[0]["nama"];
+    $cek_nis = ambil_data("SELECT NIS FROM siswa WHERE NIS = '$nis' AND id != $id")[0]["NIS"];
+
+    if ($cek_nis == $nis) {
+        $_SESSION['message_fail'] = "Gagal diubah, NIS Siswa sudah terdaftar";
+        header("Location: daftar_siswa.php");
+    } elseif ($cek_nama == $nama) {
+        $_SESSION['message_fail'] = "Gagal diubah, nama Siswa sudah terdaftar";
+        header("Location: daftar_siswa.php");
+    }
+
     $query = "UPDATE siswa SET NIS = '$nis', nama = '$nama', kelas = '$kelas', jenis_kelamin = '$jenis_kelamin', alamat = '$alamat' WHERE id = $id";
-    
     mysqli_query($conn, $query);
-    
-    header("Location: daftar_siswa.php");
-    
+        
     return mysqli_affected_rows($conn);
     
 }

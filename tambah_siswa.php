@@ -4,7 +4,7 @@ require 'koneksi.php';
 
 if (isset($_POST["submit"])) {
 	if (tambahSiswa($_POST) > 0) {
-		$_SESSION['siswa_message'] = "Data Berhasil Ditambahkan";
+		$_SESSION['message_success'] = "Data Berhasil Ditambahkan";
 		header("Location: daftar_siswa.php");
 	}
 }
@@ -12,7 +12,6 @@ if (isset($_POST["submit"])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,16 +33,14 @@ if (isset($_POST["submit"])) {
 			</div>
 			<div class="container pt-2 pb-2 pe-5 ps-5">
 				<div class="mt-2">
-					<?php
-					if (isset($_SESSION['gagal'])) :
-					?>
+					<?php if (isset($_SESSION['message_fail'])) : ?>
 						<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-							<?php echo $_SESSION['gagal']; ?>
+							<?php echo $_SESSION['message_fail']; ?>
 							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
 					<?php
-						unset($_SESSION["gagal"]);
-					endif;
+						unset($_SESSION["message_fail"]);
+						endif;
 					?>
 					<form action="" method="post">
 						<div class="card p-3">
@@ -77,6 +74,7 @@ if (isset($_POST["submit"])) {
 								<textarea class="form-control" id="alamat" rows="3" name="alamat" required></textarea>
 							</div>
 							<div class="mb-3">
+								<a href="daftar_siswa.php" class="btn btn-secondary">Batal</a>
 								<button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Submit</button>
 							</div>
 						</div>

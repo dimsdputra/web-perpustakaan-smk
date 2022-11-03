@@ -63,7 +63,7 @@ $data_admin = ambil_data("SELECT * FROM admin");
                                     <th scope="row"><?= $i; ?></th>
                                     <td class="table-secondary"><?= $admin["nama"]; ?></td>
                                     <td><?= $admin["username"]; ?></td>
-                                    <td class="d-flex gap-2">
+                                    <td class="d-flex justify-content-center gap-2">
                                         <a href="edit_admin.php?id=<?= $admin["id"] ?>" class="btn btn-warning text-decoration-none d-block text-white">Edit</a>
                                         <a href="hapus_admin.php?id=<?= $admin["id"] ?>" class="btn btn-danger text-decoration-none d-block text-white">Hapus</a>
                                     </td>

@@ -7,8 +7,12 @@ if (!isset($_SESSION["login"])) {
 ?>
 
 <div class="sidebar shadow" id="side-nav" style=" background-color: #222831;">
-    <div class="header-box px-2 pt-3 pb-4">
-        <img src="./asset/logo smkn mojoagung.png" alt="" srcset="" class="w-25">
+    <div style="width: 100%; height: 15vh; display: flex; align-items: center; justify-items: center; padding: 10px 35px">
+        <img src="./asset/smkn-mjg.png" alt="" style="width: 35%; object-fit: cover;">
+        <p style="margin: 0; padding-left: 20px; color: white; font-weight: 700;">
+            SMKN <br>
+            Mojoagung
+        </p>
     </div>
     <ul class="list-unstyled px-4">
         <li class="list">
@@ -63,6 +67,8 @@ if (!isset($_SESSION["login"])) {
                 <li><a class="dropdown-item" href="tambah_admin.php">Tambah Admin</a></li>
             </ul>
         </li>
-        <h3 class="p-2"><a class="text-decoration-none text-light btn" style="background-color: #00ADB5;" href="logout.php">Logout</a></h3>
+        <p>
+            <a class="text-decoration-none text-light btn" style="background-color: #00ADB5;" href="logout.php">Logout</a>
+        </p>
     </ul>
 </div>
