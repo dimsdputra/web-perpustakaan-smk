@@ -13,15 +13,14 @@ if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
 
-    //cek username
     if (mysqli_num_rows($result) === 1) {
-        //cek password
         $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row["password"])) {
-            //set session
+        
+        if (password_verify($password, $row["password"])) {                        
             $_SESSION["login"] = true;
+            $_SESSION["login_success"] = "Selamat datang Admin ". $row["nama"];
 
             header("Location: index.php");
             exit;
@@ -40,6 +39,7 @@ if (isset($_POST["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Login</title>
 </head>
 
 <body style=" background-color: #222831;">

@@ -1,13 +1,16 @@
 <?php
 session_start();
-
 require 'koneksi.php';
 
+$data_siswa = ambil_data("SELECT * FROM siswa");
+$data_buku = ambil_data("SELECT * FROM buku");
 
-//Ambil data siswa
-
-
-//Ambil data buku
+if (isset($_POST["submit"])) {
+    if (tambahPeminjaman($_POST) > 0) {
+        $_SESSION["peminjaman_message"] = "Data berhasil di tambahkan";
+        header("Location: daftar_peminjaman_buku.php");
+    }
+}
 
 ?>
 
@@ -18,7 +21,7 @@ require 'koneksi.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Buku</title>
+    <title>Tambah Peminjaman Buku</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -52,14 +55,18 @@ require 'koneksi.php';
                                 <label for="kode_buku" class="form-label">Nama Peminjam</label>
                                 <select class="form-select" aria-label="Default select example" id="peminjam" name="peminjam" required>
 									<option disabled selected>Pilih Data</option>
-                                    <option value="">data siswa</option>
+                                    <?php foreach ($data_siswa as $siswa) : ?>
+                                        <option value="<?= $siswa["nama"] ?>"><?= $siswa["nama"] ?></option>
+                                    <?php endforeach; ?>
 								</select>
                             </div>
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul Buku</label>
                                 <select class="form-select" aria-label="Default select example" id="judul_buku" name="judul_buku" required>
 									<option disabled selected>Pilih Data</option>
-									<option value="">data buku</option>
+                                    <?php foreach ($data_buku as $buku) : ?>
+                                        <option value="<?= $buku["judul"] ?>"><?= $buku["judul"] ?></option>
+                                    <?php endforeach; ?>
 								</select>
                             </div>
                             <div class="mb-3">

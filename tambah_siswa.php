@@ -3,8 +3,8 @@ session_start();
 require 'koneksi.php';
 
 if (isset($_POST["submit"])) {
-	if (tambah($_POST) > 0) {
-		$_SESSION['berhasil'] = "Data Berhasil Ditambahkan";
+	if (tambahSiswa($_POST) > 0) {
+		$_SESSION['message_success'] = "Data Berhasil Ditambahkan";
 		header("Location: daftar_siswa.php");
 	}
 }
@@ -12,12 +12,11 @@ if (isset($_POST["submit"])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Siswa</title>
+	<title>Tambah Siswa</title>
 	<link rel="stylesheet" href="style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -34,16 +33,14 @@ if (isset($_POST["submit"])) {
 			</div>
 			<div class="container pt-2 pb-2 pe-5 ps-5">
 				<div class="mt-2">
-					<?php
-					if (isset($_SESSION['gagal'])) :
-					?>
+					<?php if (isset($_SESSION['message_fail'])) : ?>
 						<div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-							<?php echo $_SESSION['gagal']; ?>
+							<?php echo $_SESSION['message_fail']; ?>
 							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
 					<?php
-						unset($_SESSION["gagal"]);
-					endif;
+						unset($_SESSION["message_fail"]);
+						endif;
 					?>
 					<form action="" method="post">
 						<div class="card p-3">
@@ -77,6 +74,7 @@ if (isset($_POST["submit"])) {
 								<textarea class="form-control" id="alamat" rows="3" name="alamat" required></textarea>
 							</div>
 							<div class="mb-3">
+								<a href="daftar_siswa.php" class="btn btn-secondary">Batal</a>
 								<button type="submit" name="submit" class="btn text-light" style="background-color: #00ADB5;">Submit</button>
 							</div>
 						</div>
